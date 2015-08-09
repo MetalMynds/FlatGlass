@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6261B453-693B-4579-80E3-FBA91A667B6A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MetalMynds.FlatGlass</RootNamespace>
+    <AssemblyName>MetalMynds.FlatGlass</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AttributeHelper.cs" />
+    <Compile Include="AutomationWindowAttribute.cs" />
+    <Compile Include="CacheLookupAttribute.cs" />
+    <Compile Include="DslLocator.cs" />
+    <Compile Include="ExpressionLocator.cs" />
+    <Compile Include="FindByAttribute.cs" />
+    <Compile Include="ForgetsAttribute.cs" />
+    <Compile Include="IHoldPlace.cs" />
+    <Compile Include="IManageState.cs" />
+    <Compile Include="LegacyControl.cs" />
+    <Compile Include="Locator.cs" />
+    <Compile Include="NotAutomationWindowAttribute.cs" />
+    <Compile Include="PlaceHolder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleLocator.cs" />
+    <Compile Include="WellKnownAsAttribute.cs" />
+    <Compile Include="WellKnownReferenceLocator.cs" />
+    <Compile Include="WindowFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MetalMynds.Utilities.UIAutomation\MetalMynds.Utilities.UIAutomation.csproj">
+      <Project>{ebe47bfe-e995-4b64-aae9-a7f3d2e6a6af}</Project>
+      <Name>MetalMynds.Utilities.UIAutomation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MetalMynds.Utilities\MetalMynds.Utilities.csproj">
+      <Project>{cd21d52f-4036-4ea6-bd06-b5feafc7acc4}</Project>
+      <Name>MetalMynds.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
