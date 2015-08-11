@@ -24,16 +24,16 @@ namespace MetalMynds.FlatGlass.UnitTests.ViewModels.WinForms
         
         [FindBy(1, How: How.AutomationId, Using: "tolstrpcntMain", Scope: Scope.Descendants)]
         [WellKnownAs("Container")]
-        private PlaceHolder<Object> container;
+        private PlaceHolder<Panel> container;
 
         [FindBy(Parent: "Container")]
-        [FindBy(1, How.AutomationId, Scope.Descendants, "Name=tabpgeBasket")]
+        [FindBy(1, How.AutomationId, Using: "tabpgeBasket", Scope: Scope.Descendants)]
         [WellKnownAs("History Tab")]
         private PlaceHolder<Tab> historyTab;
 
         [WellKnownAs("Registration Tab")]
         [FindBy(Parent: "Container")]
-        [FindBy(1, How.AutomationId, Scope.Descendants, "Name=tabpgRegistration")]
+        [FindBy(1, How.AndProperty, "Name=tabpgRegistration", Scope: Scope.Descendants)]
         private PlaceHolder<Tab> registrationTab;
      
         [FindBy(Parent: "Registration Tab Pane")]
