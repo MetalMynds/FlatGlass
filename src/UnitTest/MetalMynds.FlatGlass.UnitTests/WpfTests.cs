@@ -22,7 +22,7 @@ namespace MetalMynds.FlatGlass.UnitTests
         {
             launcher = new ApplicationLauncher(TimeSpan.Parse("00:00:30"));
 
-            application = launcher.LaunchOrRecycle("Example.PetShop", @"Example.PetShop.exe", null);
+            application = launcher.LaunchOrRecycle("Example.PetShop", @"Examples\Wpf\Example.PetShop.exe", null);
 
             WindowFactory.ControlConstructor = new WindowFactory.ConstructFromElement((controlType, element, name) =>
             {
