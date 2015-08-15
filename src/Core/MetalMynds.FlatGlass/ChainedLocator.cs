@@ -16,7 +16,7 @@ namespace MetalMynds.FlatGlass
     /// <summary>
     ///     This class allows x number of automation properties pairs to be either or'd or and'd together.
     /// </summary>
-    public class ExpressionLocator : Locator
+    public class ChainedLocator : Locator
     {
         public enum ConditionType
         {
@@ -27,7 +27,7 @@ namespace MetalMynds.FlatGlass
         private readonly Condition _condition;
         private readonly String _description;
 
-        public ExpressionLocator(String Name, int Order, Scope Scope, ConditionType Type,
+        public ChainedLocator(String Name, int Order, Scope Scope, ConditionType Type,
                                  params String[] PropertyValuePairs)
             : base(Name, Order, Scope)
         {

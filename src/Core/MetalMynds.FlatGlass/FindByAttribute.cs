@@ -59,12 +59,12 @@ namespace MetalMynds.FlatGlass
 
             if (How == How.AndProperty)
             {
-                _locator = new ExpressionLocator(String.Empty, _order, Scope, ExpressionLocator.ConditionType.And,
+                _locator = new ChainedLocator(String.Empty, _order, Scope, ChainedLocator.ConditionType.And,
                                                 PropertyValuePairs);
             }
             else if (How == How.OrProperty)
             {
-                _locator = new ExpressionLocator(String.Empty, _order, Scope, ExpressionLocator.ConditionType.Or,
+                _locator = new ChainedLocator(String.Empty, _order, Scope, ChainedLocator.ConditionType.Or,
                                                 PropertyValuePairs);
             }
             else
