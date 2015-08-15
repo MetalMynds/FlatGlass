@@ -4,14 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6261B453-693B-4579-80E3-FBA91A667B6A}</ProjectGuid>
+    <ProjectGuid>{3D5B87E1-A465-49E3-93BE-E52EC74F9CBC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MetalMynds.FlatGlass</RootNamespace>
-    <AssemblyName>MetalMynds.FlatGlass</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>MetalMynds.FlatGlass.Apt</RootNamespace>
+    <AssemblyName>MetalMynds.FlatGlass.Apt</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,52 +31,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr4.Runtime.net45">
-      <HintPath>..\..\packages\Antlr4.Runtime.4.3.0\lib\net45\Antlr4.Runtime.net45.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UIAutomationClient" />
-    <Reference Include="UIAutomationProvider" />
-    <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AttributeHelper.cs" />
-    <Compile Include="AutomationWindowAttribute.cs" />
-    <Compile Include="CacheLookupAttribute.cs" />
-    <Compile Include="DslLocator.cs" />
-    <Compile Include="ExpressionLocator.cs" />
-    <Compile Include="FindByAttribute.cs" />
-    <Compile Include="ForgetsAttribute.cs" />
-    <Compile Include="IHoldPlace.cs" />
-    <Compile Include="IManageState.cs" />
-    <Compile Include="LegacyControl.cs" />
-    <Compile Include="Locator.cs" />
-    <Compile Include="NotAutomationWindowAttribute.cs" />
-    <Compile Include="PlaceHolder.cs" />
+    <Compile Include="Havelock.cs" />
+    <Compile Include="IAdept.cs" />
+    <Compile Include="Mirror.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimpleLocator.cs" />
-    <Compile Include="WellKnownAsAttribute.cs" />
-    <Compile Include="WellKnownReferenceLocator.cs" />
-    <Compile Include="WindowFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MetalMynds.Utilities.UIAutomation\MetalMynds.Utilities.UIAutomation.csproj">
-      <Project>{ebe47bfe-e995-4b64-aae9-a7f3d2e6a6af}</Project>
-      <Name>MetalMynds.Utilities.UIAutomation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MetalMynds.Utilities\MetalMynds.Utilities.csproj">
-      <Project>{cd21d52f-4036-4ea6-bd06-b5feafc7acc4}</Project>
-      <Name>MetalMynds.Utilities</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

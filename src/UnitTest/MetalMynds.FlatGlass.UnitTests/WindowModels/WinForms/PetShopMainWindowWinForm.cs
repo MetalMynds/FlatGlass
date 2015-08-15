@@ -12,7 +12,13 @@ namespace MetalMynds.FlatGlass.UnitTests.ViewModels.WinForms
     using System.Text;
     using System.Windows.Automation;
 
-    using WiPFlash.Components;    
+    using WiPFlash.Components;
+    using TestStack.White;
+    using TestStack.White.UIItems.ListBoxItems;
+
+    using ComboBox = TestStack.White.UIItems.ListBoxItems.ComboBox;
+    using ListBox = TestStack.White.UIItems.ListBoxItems.ListBox;
+    //using TextBox = TestStack.White.UIItems.TextBox;
 
     /// <summary>
     /// TODO: Update summary.
@@ -21,43 +27,58 @@ namespace MetalMynds.FlatGlass.UnitTests.ViewModels.WinForms
     public class PetShopMainWindowWinForm
     {
 
-        
+
         [FindBy(1, How: How.AutomationId, Using: "tolstrpcntMain", Scope: Scope.Descendants)]
         [WellKnownAs("Container")]
-        private PlaceHolder<Panel> container;
+        public PlaceHolder<Panel> container;
 
         [FindBy(Parent: "Container")]
-        [FindBy(1, How.AutomationId, Using: "tabpgeBasket", Scope: Scope.Descendants)]
+        [FindBy(1, How.AutomationId, Using: "tabctrlAdmin", Scope: Scope.Descendants, ControlType: "Tab")]
+        [WellKnownAs("Registration History Tabs")]
+        public PlaceHolder<Tab> tabctrlAdmin;
+
+        [FindBy(Parent: "Registration History Tabs")]
+        [FindBy(1, How.AutomationName, Using: "History", Scope: Scope.ChildrenOnly, ControlType: "TabItem")]
         [WellKnownAs("History Tab")]
-        private PlaceHolder<Tab> historyTab;
+        public PlaceHolder<Tab> historyTab;
 
+        [FindBy(Parent: "Registration History Tabs")]
+        [FindBy(1, How.AutomationName, Using: "Registration", Scope: Scope.ChildrenOnly, ControlType: "TabItem")]
         [WellKnownAs("Registration Tab")]
-        [FindBy(Parent: "Container")]
-        [FindBy(1, How.AndProperty, "Name=tabpgRegistration", Scope: Scope.Descendants)]
         private PlaceHolder<Tab> registrationTab;
-     
-        [FindBy(Parent: "Registration Tab Pane")]
-        [FindBy(1, How: How.AutomationId, Using: "txtName", Scope: Scope.ChildrenOnly, ControlType: "Edit")]
-        private PlaceHolder<TextBox> name;
 
-        [FindBy(Parent: "Registration Tab Pane")]
-        [FindBy(1, How: How.AutomationId, Using: "cmbType", Scope: Scope.ChildrenOnly, ControlType: "ComboBox")]
+        [FindBy(Parent: "Registration History Tabs")]
+        [FindBy(1, How.AutomationId, Using: "tabpgRegistration", Scope: Scope.All, ControlType: "Pane")]
+        [WellKnownAs("Registration Pane")]
+        public PlaceHolder<Panel> registrationTabContainer;
+
+        //[FindBy(Parent: "Registration History Tabs")]
+        //[FindBy(1, How.AndProperty, Scope.ChildrenOnly, "Name=Registration", "AutomationId=tabpgRegistration")]
+        //[WellKnownAs("Registration Pane")]
+        //public PlaceHolder<Panel> registrationTabContainer;
+
+        [FindBy(Parent: "Registration History Tabs")]
+        [FindBy(1, How: How.AutomationId, Using: "txtName", Scope: Scope.Descendants, ControlType: "Edit")]
+        public PlaceHolder<TextBox> name;
+
+        [FindBy(Parent: "Registration History Tabs")]
+        [FindBy(1, How: How.AutomationId, Using: "cmbType", Scope: Scope.Descendants, ControlType: "ComboBox")]
         private PlaceHolder<EditableComboBox> type;
 
-        [FindBy(Parent: "Registration Tab Pane")]
-        [FindBy(1, How: How.AutomationId, Using: "cmbEats", Scope: Scope.ChildrenOnly, ControlType: "ComboBox")]
+        [FindBy(Parent: "Registration History Tabs")]
+        [FindBy(1, How: How.AutomationId, Using: "cmbEats", Scope: Scope.Descendants, ControlType: "ComboBox")]
         private PlaceHolder<ComboBox> eats;
 
-        [FindBy(Parent: "Registration Tab Pane")]
-        [FindBy(1, How: How.AutomationId, Using: "lblPrice", Scope: Scope.ChildrenOnly, ControlType: "Edit")]
+        [FindBy(Parent: "Registration History Tabs")]
+        [FindBy(1, How: How.AutomationId, Using: "txtPrice", Scope: Scope.Descendants, ControlType: "Edit")]
         private PlaceHolder<TextBox> price;
 
-        [FindBy(Parent: "Registration Tab Pane")]
-        [FindBy(1, How: How.AutomationId, Using: "lstRules", Scope: Scope.ChildrenOnly, ControlType: "List")]
+        [FindBy(Parent: "Registration History Tabs")]
+        [FindBy(1, How: How.AutomationId, Using: "lstRules", Scope: Scope.Descendants, ControlType: "List")]
         private PlaceHolder<ListView> rules;
 
-        [FindBy(Parent: "Registration Tab Pane")]
-        [FindBy(1, How: How.AutomationId, Using: "butSave", Scope: Scope.ChildrenOnly, ControlType: "Button")]
+        [FindBy(Parent: "Registration History Tabs")]
+        [FindBy(1, How: How.AutomationId, Using: "butSave", Scope: Scope.Descendants, ControlType: "Button")]
         private PlaceHolder<Button> save;
 
         public PetShopMainWindowWinForm(AutomationElement root)
@@ -71,24 +92,23 @@ namespace MetalMynds.FlatGlass.UnitTests.ViewModels.WinForms
 
             this.name.Control.Text = name;
 
-            this.type.Control.Select(String.Format("PetType[{0}]", type));
+            var items = this.type.Control.Items;
 
-            this.eats.Control.Select(String.Format("PetFood[{0}]", eats));
+            this.type.Control.Text = String.Format("{0}", type);
+
+            this.eats.Control.SetValue((String.Format("{0}", eats)));
 
             this.price.Control.Text = String.Format("{0:0.00}", registrationPrice);
 
             this.rules.Control.ClearSelection();
 
-            foreach (String rule in rules)
-            {
-                this.rules.Control.Select(String.Format("Rule[{0}]", rule));
-            }
+            this.rules.Control.Select(rules);
 
             this.rules.Control.EnsureVisible();
 
             this.save.Control.Click();
-
         }
+
 
         public void ShowHistory()
         {

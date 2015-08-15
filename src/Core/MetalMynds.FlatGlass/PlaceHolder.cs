@@ -25,7 +25,7 @@ namespace MetalMynds.FlatGlass
         private readonly String _wellKnownAs;
         private Object _control;
         private List<IHoldPlace> _windowPlaceHolderList;
-        private TimeSpan _implitictWaitTimeout = new TimeSpan(0, 1, 0);
+        private TimeSpan _implitictWaitTimeout = new TimeSpan(0, 0, 15); // Needs to Be Overridable to alllow different value for a given locator.
         private AutomationElement _element;
         private Object _window;
 

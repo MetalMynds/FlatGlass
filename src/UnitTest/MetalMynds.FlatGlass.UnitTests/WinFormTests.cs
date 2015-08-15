@@ -3,11 +3,16 @@ using System.Collections.Generic;
 
 using MetalMynds.Utilities;
 
+using TestStack.White;
+using TestStack.White.UIItems.ListBoxItems;
+
 using WiPFlash;
 using WiPFlash.Framework;
+using Application = WiPFlash.Components.Application;
 using WiPFlash.Components;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MetalMynds.FlatGlass.UnitTests.ViewModels.WinForms;
+using TestStack.White.UIItems.Actions;
 
 namespace MetalMynds.FlatGlass.UnitTests
 {
@@ -27,27 +32,59 @@ namespace MetalMynds.FlatGlass.UnitTests
             WindowFactory.ControlConstructor = new WindowFactory.ConstructFromElement((controlType, element, name) =>
             {
 
-                Object[] parameters = new Object[2];
+                if (controlType.Namespace.Contains("WiPFlash"))
+                {
 
-                parameters[0] = element;
-                parameters[1] = name;
+                    Object[] parameters = new Object[2];
 
-                return ReflectionHelper.Instantiate(controlType.Assembly, controlType.FullName, parameters);
+                    parameters[0] = element;
+                    parameters[1] = name;
+
+                    return ReflectionHelper.Instantiate(controlType.Assembly, controlType.FullName, parameters);
+
+                }
+                else if (controlType.Namespace.Contains("TestStack.White"))
+                {
+
+                    Object[] parameters = new Object[2];
+
+                    parameters[0] = element;
+                    parameters[1] = new TestStack.White.UIItems.Actions.NullActionListener();
+
+                    return ReflectionHelper.Instantiate(controlType.Assembly, controlType.FullName, parameters);
+
+                }
+
+                throw new CreatePlaceHeldControlFailedException(String.Format("Control Namespace Not Recognised!\nNamespace: {0}", controlType.Namespace), null);
 
             });
 
         }
-       
+
         [TestMethod]
         public void PetShopWindowWinFormsGuiTest()
         {
 
-            try
-            {
+            //try
+            //{
 
                 Window window = application.FindWindow(FindBy.UiAutomationId("FormMain"));
 
                 var petshopWindow = WindowFactory.Create<PetShopMainWindowWinForm>(window.Element);
+
+                ////var history = petshopWindow.historyTab.Control;
+
+                ////history.Select();
+
+                //var container = petshopWindow.container.Control;
+
+                //var tabControl = petshopWindow.tabctrlAdmin.Control;
+
+                ////var panel = petshopWindow.registrationTabContainer.Control;
+
+                //var text = petshopWindow.name.Control;
+
+                //text.Text = "Dave is legendery!";
 
                 List<String> rules = new List<string>();
 
@@ -71,11 +108,11 @@ namespace MetalMynds.FlatGlass.UnitTests
 
                 petshopWindow.ShowHistory();
 
-            }
-            catch (Exception ex)
-            {
-
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw;
+            //}
         }
     }
 
