@@ -32,6 +32,6 @@ An example from the UnitTests;
         [FindBy(Parent: "Registration Tab")]
         [FindBy(1, How: How.AutomationId, Using: "petTypeInput", Scope: Scope.ChildrenOnly, ControlType: "ComboBox")]
         private PlaceHolder<EditableComboBox> type;
-'''
+```
 
 FlatGlass is aimed at reducing the effort required to produce and maintain a Window Object Model for an application.
