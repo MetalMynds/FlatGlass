@@ -53,7 +53,7 @@
     <Compile Include="ChainedLocator.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DslLocator.cs" />
+    <Compile Include="ExpressionLocator.cs" />
     <Compile Include="FindByAttribute.cs" />
     <Compile Include="ForgetsAttribute.cs" />
     <Compile Include="IHoldPlace.cs" />

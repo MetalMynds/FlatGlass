@@ -27,7 +27,7 @@ namespace MetalMynds.FlatGlass
         {
             _order = Order;
 
-            _locator = new DslLocator(String.Empty, _order, Scope, Expression);
+            _locator = new ExpressionLocator(String.Empty, _order, Scope, Expression);
         }
 
         /// <summary>

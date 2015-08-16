@@ -15,12 +15,12 @@ namespace MetalMynds.FlatGlass
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class DslLocator : Locator
+    public class ExpressionLocator : Locator
     {
-        //private readonly ConditionLexer _lexer;
-        //private readonly ConditionParser _parser;
+        private readonly PrevailLexer _lexer;
+        private readonly PrevailParser _parser;
 
-        public DslLocator(String Name, int Order, Scope Scope, String expression)
+        public ExpressionLocator(String Name, int Order, Scope Scope, String expression)
             : base(Name, Order, Scope)
         {
             

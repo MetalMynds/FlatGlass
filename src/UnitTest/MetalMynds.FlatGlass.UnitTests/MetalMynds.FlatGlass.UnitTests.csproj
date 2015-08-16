@@ -92,6 +92,8 @@
     <Content Include="Examples\Wpf\Example.PetShop.exe.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="TestData\Examples.txt" />
+    <Content Include="TestData\Simple.txt" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

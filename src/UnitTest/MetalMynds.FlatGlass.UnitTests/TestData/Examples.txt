@@ -1,0 +1,19 @@
+Class = 'Awsum'
+
+Class != 'Awsum'
+
+Class = 'Awsum' And Name = 'Adi'
+
+Class = 'Awsum' Or Name = 'Dave'
+
+Index = 4
+
+Index != 4
+
+Index = 4 And Depth = 1
+
+Index = 4 Or Depth = 1
+
+(Class = 'Awsum') And (Name = 'Dave')
+
+(Class = 'Awsum') Or (Name = 'Dave')
