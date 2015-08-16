@@ -3,7 +3,7 @@ Sane Windows Test Automation
 
 FlatGlass is an attempt to separate the concerns of location of an automation element and what is done with the element when found. 
 
-It is automation framework agnostic and works using simple locators on attributes similar in nature to the SelementPageFactory.
+It is automation framework agnostic and works using simple locators on attributes similar in nature to the WebDriver (Selenium 2) PageFactory https://code.google.com/p/selenium/wiki/PageFactory
 
 The Window Object Model is a direct counterpart to the Page Object Model found in web automation testing. 
 POM's are where pages are represented by classes which implement methods used to fill forms, press buttons etc.
