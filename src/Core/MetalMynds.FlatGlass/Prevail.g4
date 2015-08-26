@@ -5,17 +5,21 @@ grammar Prevail;
  */
 
 expression
-	|   condition 
-	:	EOF
-	;
+		:   (condition)* NEWLINE*
+		|   EOF
+		;
 
 condition 
-	| (AND condition+) -> AndCondition
-	| (OR condition+) -> OrCondition
-	| (NOT condition+) -> NotCondition
-	| (IDENTIFIER EQUAL value) -> PropertyCondition
+		: '(' condition ')' # SubCondition
+		| (property AND condition) # AndCondition
+		| (property OR condition) # OrCondition
+		| (property NOT condition) # NotCondition                
+		|  property # PropertyCondition
+		;
 
-
+property 
+		: (IDENTIFIER (EQUAL | NOT_EQUAL) value);
+   
 value : (number | STRING);
 
 number
@@ -50,15 +54,20 @@ AND : 'And' | 'AND' | 'and' | '&&';
 
 OR : 'Or' | 'OR' | 'or' | '||';
 
+NOT: 'Not' | 'NOT' | 'not';
+
 IDENTIFIER
 	: [a-zA-Z_][a-zA-Z_0-9]*
 	;
 
-STRING : '"' ( '\\"' | . )*? '"' ;
+STRING : QUOTE ('\\'QUOTE | . )*? QUOTE;
+
+fragment QUOTE
+	:   '\'';
 
 EQUAL : '=' | '==' | 'EQUAL' | 'Equal' | 'equals';
 
-NOT_EQUAL : '!=' | '!=' | '!==';
+NOT_EQUAL : '!=' | '!==' | '!===' | '<>';
 	
 NEWLINE
 	: '\r'? '\n' -> skip
