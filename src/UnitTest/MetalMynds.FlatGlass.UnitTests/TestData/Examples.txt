@@ -17,3 +17,7 @@ Index = 4 Or Depth = 1
 (Class = 'Awsum') And (Name = 'Dave')
 
 (Class = 'Awsum') Or (Name = 'Dave')
+
+(Class = 'Awsum' Or Name = 'Dave')
+
+(Class = 'Awsum' Or Name = 'Adi')

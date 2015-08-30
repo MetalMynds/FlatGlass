@@ -10,11 +10,10 @@ expression
 		;
 
 condition 
-		: '(' condition ')' # SubCondition
-		| (property AND condition) # AndCondition
-		| (property OR condition) # OrCondition
-		| (property NOT condition) # NotCondition                
-		|  property # PropertyCondition
+		: condition AND condition # AndCondition
+		| condition OR condition # OrCondition
+		| condition NOT condition # NotCondition                
+		| property # PropertyCondition
 		;
 
 property 
