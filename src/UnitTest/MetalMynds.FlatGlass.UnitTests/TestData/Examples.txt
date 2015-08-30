@@ -20,4 +20,4 @@ Index = 4 Or Depth = 1
 
 (Class = 'Awsum' Or Name = 'Dave')
 
-(Class = 'Awsum' Or Name = 'Adi')
+(Class = 'Awsum' And Name = 'Adi')
