@@ -17,12 +17,15 @@ namespace MetalMynds.FlatGlass.UnitTests
     public class ConditionTests
     {
         [TestMethod]
-        public void ConstructComplexConditionsProgrammatically()
+        public void CreateBasicConditions()
         {
 
             // Class = 'Awsum'
 
             Condition result1 = new PropertyCondition(AutomationElement.ClassNameProperty, "Awsum");
+
+
+
 
             // Class != 'Awsum'
 

@@ -58,7 +58,7 @@ namespace MetalMynds.FlatGlass
                 throw new ArgumentNullException("window", "Parameter window Cannot Be Null!");
             }
 
-            var windowPlaceHolderList = new List<IHoldPlace>();
+            var windowContext = WindowContext.Create();
 
             var windowType = window.GetType();
 
@@ -98,7 +98,7 @@ namespace MetalMynds.FlatGlass
                    
                     if (field != null)
                     {
-                        placeholderObject = CreatePlaceHolder(windowPlaceHolderList, field.Name, field.FieldType, root, locators, window, cache, wellKnownName);
+                        placeholderObject = CreatePlaceHolder(windowContext, field.Name, field.FieldType, root, locators, window, cache, wellKnownName);
 
                         if (placeholderObject == null)
                         {
@@ -109,7 +109,7 @@ namespace MetalMynds.FlatGlass
                     }
                     else if (property != null)
                     {
-                        placeholderObject = CreatePlaceHolder(windowPlaceHolderList, property.Name, property.PropertyType, root, locators, window, cache, wellKnownName);
+                        placeholderObject = CreatePlaceHolder(windowContext, property.Name, property.PropertyType, root, locators, window, cache, wellKnownName);
 
                         if (placeholderObject == null)
                         {
@@ -127,14 +127,14 @@ namespace MetalMynds.FlatGlass
             }
         }
 
-        private static object CreatePlaceHolder(List<IHoldPlace> windowPlaceHolderList, String fieldPropertyName, Type genericTypedPlaceHolder, AutomationElement parent, List<Locator> locators, Object window, bool cache, String wellKnownName = null)
+        private static object CreatePlaceHolder(WindowContext windowContext, String fieldPropertyName, Type genericTypedPlaceHolder, AutomationElement parent, List<Locator> locators, Object window, bool cache, String wellKnownName = null)
         {
                        
             object placeHolderObject = null;
 
             var arguments = new object[7];
 
-            arguments[0] = windowPlaceHolderList;
+            arguments[0] = windowContext;
             arguments[1] = fieldPropertyName;
             arguments[2] = parent;
             arguments[3] = locators;

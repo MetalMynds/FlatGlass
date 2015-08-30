@@ -21,3 +21,5 @@ Index = 4 Or Depth = 1
 (Class = 'Awsum' Or Name = 'Dave')
 
 (Class = 'Awsum' And Name = 'Adi')
+
+(Class = 'Awsum' And Name = 'Adi') And Postion = 'Top'

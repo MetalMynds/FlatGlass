@@ -24,18 +24,18 @@ namespace MetalMynds.FlatGlass
         private readonly AutomationElement _parent;
         private readonly String _wellKnownAs;
         private Object _control;
-        private List<IHoldPlace> _windowPlaceHolderList;
+        private WindowContext _windowContext;
         private TimeSpan _implitictWaitTimeout = new TimeSpan(0, 0, 15); // Needs to Be Overridable to alllow different value for a given locator.
         private AutomationElement _element;
         private Object _window;
 
-        public PlaceHolder(List<IHoldPlace> windowPlaceHolderList, String fieldPropertyName, AutomationElement parent,
+        public PlaceHolder(WindowContext windowContext, String fieldPropertyName, AutomationElement parent,
                            List<Locator> locators, Object window, bool cache, String wellKnownName = null)
         {
 
-            windowPlaceHolderList.Add(this);
+            windowContext.PlaceHolders.Add(this);
 
-            _windowPlaceHolderList = windowPlaceHolderList;
+            _windowContext = windowContext;
             _fieldPropertyName = fieldPropertyName;
             _parent = parent;
             _locatorsList = locators;
@@ -48,11 +48,6 @@ namespace MetalMynds.FlatGlass
         {
             get { return _implitictWaitTimeout; }
             set { _implitictWaitTimeout = value; }
-        }
-
-        public List<IHoldPlace> WindowPlaceHolderList
-        {
-            get { return _windowPlaceHolderList; }
         }
 
         protected virtual AutomationElement GetElement()
@@ -72,7 +67,7 @@ namespace MetalMynds.FlatGlass
 
             var fullLocatorList = new List<Locator>();
 
-            ExpandLocators(_windowPlaceHolderList, ref fullLocatorList, _locatorsList);
+            ExpandLocators(_windowContext.PlaceHolders, ref fullLocatorList, _locatorsList);
 
             Locator previousLocator = fullLocatorList[0];
 
@@ -183,6 +178,8 @@ namespace MetalMynds.FlatGlass
         {
             get { return _wellKnownAs; }
         }
+
+        public WindowContext Context { get { return _windowContext; } }
 
         public List<Locator> LocatorList
         {
@@ -358,12 +355,12 @@ namespace MetalMynds.FlatGlass
     public class PlaceHolder
     {
 
-        public static PlaceHolder<T> Create<T>(AutomationElement Parent, List<IHoldPlace> WellKnownList, params FindByAttribute[] FindBy)
+        public static PlaceHolder<T> Create<T>(AutomationElement Parent, WindowContext Context, params FindByAttribute[] FindBy)
         {
-            return Create<T>(Parent, null, WellKnownList, FindBy);
+            return Create<T>(Parent, null, Context, FindBy);
         }
 
-        public static PlaceHolder<T> Create<T>(AutomationElement Parent, Object Window, List<IHoldPlace> WellKnownList, params FindByAttribute[] FindBy)
+        public static PlaceHolder<T> Create<T>(AutomationElement Parent, Object Window, WindowContext WindowContext, params FindByAttribute[] FindBy)
         {
 
             List<Locator> locators = new List<Locator>();
@@ -373,8 +370,10 @@ namespace MetalMynds.FlatGlass
                 locators.Add(findBy.Locator);
             }
 
+            //if (WellKnownList == null) { WellKnownList = new List<IHoldPlace>(); };
+
             var placeHolder = new PlaceHolder<T>(
-                                    WellKnownList == null ? new List<IHoldPlace>() : WellKnownList,
+                                    WindowContext,
                                     "",
                                     Parent,
                                     locators,

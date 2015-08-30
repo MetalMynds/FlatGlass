@@ -8,13 +8,38 @@ namespace MetalMynds.Utilities
 
         public static AutomationProperty GetProperty(String ShortName)
         {
+
+            if (String.IsNullOrWhiteSpace(ShortName))
+            {
+                throw new ArgumentNullException("GetProperty ShortName Parameter can't be Null or Empty or Whitespace!");
+            }
+
             try
             {
-                String fullName = String.Format("{0}Property", ShortName);
+
+                // Handle 2 Shortcuts 
+                // 
+                //        ClassName as Class 
+                //        
+                //        AutomationId as Id
+                //
+                //
+
+                if (String.Equals(ShortName, "Class", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    ShortName = "ClassName";
+                }
+
+                if (String.Equals(ShortName, "Id", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    ShortName = "AutomationId";
+                }
+
+                String fullPropertyName = String.Format("{0}Property", ShortName);
 
                 return
                     (AutomationProperty)
-                    ReflectionHelper.GetStaticFieldValue(typeof (AutomationElement), fullName, true);
+                    ReflectionHelper.GetStaticFieldValue(typeof(AutomationElement), fullPropertyName, true);
             }
             catch (Exception ex)
             {
@@ -34,8 +59,8 @@ namespace MetalMynds.Utilities
             {
                 return null;
             }
-            
-        }        
+
+        }
 
     }
 }

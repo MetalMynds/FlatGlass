@@ -69,6 +69,7 @@ namespace MetalMynds.FlatGlass.UnitTests
             petshopWindow.RegisterAnimal("Capistrano", "Cat", "Carnivorous", 9.99, rules.ToArray());
 
             petshopWindow.ShowHistory();
+            
         }
 
     }

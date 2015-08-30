@@ -6,7 +6,6 @@ grammar Prevail;
 
 expression
 		:   (condition)* NEWLINE*
-		|   EOF
 		;
 
 condition 
@@ -77,5 +76,5 @@ DOT : '.';
 COMMA : ',';
 
 WS
-	:	[ \t\u000C]+ -> channel(HIDDEN)
+	:	[ \t\u000C]+ -> skip
 	;
