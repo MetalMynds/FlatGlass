@@ -98,17 +98,17 @@
       <Visitor>True</Visitor>
       <TargetLanguage>CSharp</TargetLanguage>
     </Antlr4>
-    <None Include="Reference\Antlr4\Antlr4.targets" />
+    <Content Include="Reference\Antlr4\Antlr4.targets" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Reference\Antlr4\antlr4-csharp-4.0.1-SNAPSHOT-complete.jar" />
-    <None Include="Reference\Antlr4\Antlr4BuildTasks.dll" />
+    <Content Include="Reference\Antlr4\antlr4-csharp-4.0.1-SNAPSHOT-complete.jar" />
+    <Content Include="Reference\Antlr4\Antlr4BuildTasks.dll" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Reference\Antlr4\Antlr4.Runtime.v2.0.dll" />
-    <None Include="Reference\Antlr4\Antlr4.Runtime.v3.5.dll" />
-    <None Include="Reference\Antlr4\Antlr4.Runtime.v4.0.dll" />
-    <None Include="Reference\Antlr4\Antlr4.Runtime.v4.5.dll" />
+    <Content Include="Reference\Antlr4\Antlr4.Runtime.v2.0.dll" />
+    <Content Include="Reference\Antlr4\Antlr4.Runtime.v3.5.dll" />
+    <Content Include="Reference\Antlr4\Antlr4.Runtime.v4.0.dll" />
+    <Content Include="Reference\Antlr4\Antlr4.Runtime.v4.5.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
