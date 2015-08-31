@@ -29,15 +29,15 @@ namespace MetalMynds.FlatGlass
             
             PrevailParser parser = new PrevailParser(new CommonTokenStream(lexer));
 
-            //IParseTree tree = parser;
+            IParseTree tree = parser.expression();
 
             ParseTreeWalker walker = new ParseTreeWalker();
 
-            PrevailCommandListener andiWalker = new PrevailCommandListener();
+            PrevailListener prevailWalker = new PrevailListener();
 
-            //walker.Walk(andiWalker, tree);
+            walker.Walk(prevailWalker, tree);
 
-            //return andiWalker.Commands;
+            //return prevailWalker.Commands;
 
 
         }

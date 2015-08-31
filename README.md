@@ -1,16 +1,17 @@
 # FlatGlass
 Sane Windows Test Automation
 
-FlatGlass is an attempt to separate the concerns of location of an automation element and what is done with the element when found. 
+FlatGlass is a framework that separates the concern of locating a control from what's done when it's found.
 
 It is automation framework agnostic and works using simple locators on attributes similar in nature to the WebDriver (Selenium 2) PageFactory https://code.google.com/p/selenium/wiki/PageFactory
 
-The Window Object Model is a direct counterpart to the Page Object Model found in web automation testing. 
-POM's are where pages are represented by classes which implement methods used to fill forms, press buttons etc.
+FlatGlass supports the Window Object Model which is a direct counterpart to the Page Object Model found in web automation testing. 
 
-In the WOM an applications windows are mapped to classes and methods are used to trigger button presses, check box's etc.
+When using a POM the pages are represented by classes which implement methods used to fill forms and press buttons.
 
-A WOM is not a test but a layer used between testing frameworks and the application under tests GUI.
+In the WOM an applications windows are mapped to classes and methods are used to trigger button presses, check box's and more.
+
+A WOM is not a test but a layer used between the testing framework and the application under test, it maps the user interface helping to reduce the size of the overall automation codebase.
 
 An example from the UnitTests;
 
@@ -34,4 +35,4 @@ An example from the UnitTests;
         private PlaceHolder<EditableComboBox> type;
 ```
 
-FlatGlass is aimed at reducing the effort required to produce and maintain a Window Object Model for an application.
+FlatGlass is aimed at reducing the effort required to produce and maintain a complete set of WOM's for an application.

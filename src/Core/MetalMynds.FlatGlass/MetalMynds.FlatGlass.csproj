@@ -71,7 +71,8 @@
     <Compile Include="Prevail.g4.parser.cs">
       <DependentUpon>Prevail.g4</DependentUpon>
     </Compile>
-    <Compile Include="PrevailCommandListener.cs" />
+    <Compile Include="PrevailListener.cs" />
+    <Compile Include="PrevailVisitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleLocator.cs" />
     <Compile Include="WellKnownAsAttribute.cs" />
