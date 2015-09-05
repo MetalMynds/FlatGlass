@@ -16,10 +16,10 @@ namespace MetalMynds.FlatGlass
         private static ConstructFromElement _controlConstructor;
 
         /// <summary>
-        /// Creates a Window and Initialises all of its PlaceHolders. Window Must Define a Constructor taking One Parameter of Type AutomationElement.
+        /// Creates a Window or Initialises all of its PlaceHolders. Window Must Define a Constructor taking One Parameter of Type AutomationElement.
         /// </summary>
         /// <typeparam name="T">Window Class Type</typeparam>
-        /// <param name="root">AutomationElement that is Root to the Window and All Element Searches.</param>
+        /// <param name="root">AutomationElement that is Root to the Window or All Element Searches.</param>
         /// <returns></returns>
         public static T Create<T>(AutomationElement root)
         {            

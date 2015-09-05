@@ -19,11 +19,16 @@ namespace MetalMynds.FlatGlass
     /// </summary>
     public class ExpressionLocator : Locator
     {
+
+        private readonly String _description;
+
         private readonly Condition _condition;
 
         public ExpressionLocator(String Name, int Order, Scope Scope, String Expression)
             : base(Name, Order, Scope)
         {
+
+            _description = String.Format("Expression Locator: Order: {0} Scope: [{1}] Expression: [{2}]", Order, Scope, Expression);
 
             PrevailLexer lexer = new PrevailLexer(new AntlrInputStream(Expression));
             
@@ -33,12 +38,11 @@ namespace MetalMynds.FlatGlass
 
             ParseTreeWalker walker = new ParseTreeWalker();
 
-            PrevailListener prevailWalker = new PrevailListener();
+            PrevailListener prevailListener = new PrevailListener();
 
-            walker.Walk(prevailWalker, tree);
+            walker.Walk(prevailListener, tree);
 
-            //return prevailWalker.Commands;
-
+            _condition = prevailListener.Result;
 
         }
 
@@ -50,7 +54,9 @@ namespace MetalMynds.FlatGlass
 
         public override string Description
         {
-            get { throw new NotImplementedException(); }
+            get { return _description; }
         }
+
+
     }
 }

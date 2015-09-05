@@ -82,6 +82,10 @@
       <Project>{6261b453-693b-4579-80e3-fba91a667b6a}</Project>
       <Name>MetalMynds.FlatGlass</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Core\MetalMynds.Utilities.UIAutomation\MetalMynds.Utilities.UIAutomation.csproj">
+      <Project>{ebe47bfe-e995-4b64-aae9-a7f3d2e6a6af}</Project>
+      <Name>MetalMynds.Utilities.UIAutomation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Core\MetalMynds.Utilities\MetalMynds.Utilities.csproj">
       <Project>{cd21d52f-4036-4ea6-bd06-b5feafc7acc4}</Project>
       <Name>MetalMynds.Utilities</Name>

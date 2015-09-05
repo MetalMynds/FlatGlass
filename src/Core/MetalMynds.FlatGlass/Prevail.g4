@@ -5,19 +5,23 @@ grammar Prevail;
  */
 
 expression
-		:   (condition)* NEWLINE*
+		:   condition
 		;
 
 condition 
 		: condition AND condition # AndCondition
 		| condition OR condition # OrCondition
-		| condition NOT condition # NotCondition                
+		| condition NOT condition # NotCondition
 		| property # PropertyCondition
 		;
 
 property 
-		: (IDENTIFIER (EQUAL | NOT_EQUAL) value);
+		: (IDENTIFIER (equals | notequals) value);
    
+equals           : EQUAL;
+
+notequals        : NOT_EQUAL;
+
 value : (number | STRING);
 
 number

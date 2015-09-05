@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Windows.Automation;
 
 namespace MetalMynds.Utilities
@@ -16,8 +17,9 @@ namespace MetalMynds.Utilities
 
             try
             {
-
-                // Handle 2 Shortcuts 
+                //
+                //
+                //  Handle 2 Shortcuts 
                 // 
                 //        ClassName as Class 
                 //        
@@ -61,6 +63,113 @@ namespace MetalMynds.Utilities
             }
 
         }
+
+        public static Boolean Compare(Condition x, Condition y)
+        {
+
+            var and = x as AndCondition;
+
+            if (and != null)
+            {
+
+                var and2 = y as AndCondition;
+
+                if (and2 == null)
+                {
+                    return false;
+                }
+
+                var andConditions = and.GetConditions();
+
+                var andConditions2 = and2.GetConditions();
+
+                int count = 0;
+
+                foreach (var condition in andConditions)
+                {
+                    if (!Compare(condition, andConditions2[count]))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            var or = x as OrCondition;
+
+            if (or != null)
+            {
+
+                var or2 = y as OrCondition;
+
+                if (or2 == null)
+                {
+                    return false;
+                }
+
+                var orConditions = or.GetConditions();
+
+                var orConditions2 = or2.GetConditions();
+
+                int count = 0;
+
+                foreach (var condition in orConditions)
+                {
+                    if (!Compare(condition, orConditions2[count]))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            var not = x as NotCondition;
+
+            if (not != null)
+            {
+
+                var not2 = y as NotCondition;
+
+                if (not2 == null)
+                {
+                    return false;
+                }
+
+                if (!Compare(not.Condition, not2.Condition))
+                {
+                    return false;
+                }
+
+            }
+
+            var property = x as PropertyCondition;
+
+            if (property != null)
+            {
+
+                var property2 = y as PropertyCondition;
+
+                if (property2 == null)
+                {
+                    return false;
+                }
+
+                if (property.Property.ProgrammaticName != property2.Property.ProgrammaticName)
+                {
+                    return false;
+                }
+
+                if (property.Value.ToString() != property2.Value.ToString())
+                {
+                    return false;
+                }
+
+                if (property.Flags != property2.Flags)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }            
 
     }
 }

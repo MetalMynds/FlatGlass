@@ -14,31 +14,31 @@ namespace MetalMynds.FlatGlass
     /// </summary>
     public abstract class Locator
     {
-        protected String BaseName;
-        protected int BaseOrder;
-        protected Scope BaseScope;
         
         protected Locator(String Name, int Order, Scope Scope)
         {
-            BaseName = Name;
-            BaseOrder = Order;
-            BaseScope = Scope;
+            this.Name = Name;
+            this.Order = Order;
+            this.Scope = Scope;
         }
 
         public virtual String Name
         {
-            get
-            {
-                return BaseName;
-            }
+            get;
+            protected set;
+            
         }
 
         public virtual int Order
         {
-            get
-            {
-                return BaseOrder; 
-            }
+            get;
+            protected set;
+        }
+
+        public virtual Scope Scope
+        {
+            get;
+            protected set;
         }
 
         public abstract Condition Condition { get; }
@@ -49,12 +49,6 @@ namespace MetalMynds.FlatGlass
         {
             return Description;
         }
-
-        public virtual Scope Scope
-        {
-            get { return BaseScope; }
-        }
-
 
     }
 }

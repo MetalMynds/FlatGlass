@@ -14,7 +14,7 @@ using MetalMynds.Utilities;
 namespace MetalMynds.FlatGlass
 {
     /// <summary>
-    ///     This class allows x number of automation properties pairs to be either or'd or and'd together.
+    ///     This class allows x number of automation properties pairs to be either or'd or or'd together.
     /// </summary>
     public class ChainedLocator : Locator
     {

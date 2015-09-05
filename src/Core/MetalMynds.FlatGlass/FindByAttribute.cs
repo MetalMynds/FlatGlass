@@ -20,7 +20,7 @@ namespace MetalMynds.FlatGlass
         /// <summary>
         /// Find UI Element By Using Expression (DSL)
         /// </summary>
-        /// <param name="Order">Specifies Order of Chained Look-Up, Does Not Have to be Sequential Or Start at 0 and Are Local to PlaceHolder.</param>
+        /// <param name="Order">Specifies Order of Chained Look-Up, Does Not Have to be Sequential Or Start at 0 or Are Local to PlaceHolder.</param>
         /// <param name="Expression">Simple Boolean Expression Tree</param>
         /// <param name="Scope">Scope of Search</param>
         public FindByAttribute(int Order, String Expression, Scope Scope = Scope.ChildrenOnly)
@@ -33,7 +33,7 @@ namespace MetalMynds.FlatGlass
         /// <summary>
         /// Find Element By Using Common Property Conditions.
         /// </summary>
-        /// <param name="Order">Specifies Order of Chained Look-Up, Does Not Have to be Sequential Or Start at 0 and Are Local to PlaceHolder.</param>
+        /// <param name="Order">Specifies Order of Chained Look-Up, Does Not Have to be Sequential Or Start at 0 or Are Local to PlaceHolder.</param>
         /// <param name="How">Specifies the Method Used to Find Controls.</param>
         /// <param name="Using">Used as a Parameter to the Specified 'How' Method.</param>
         /// <param name="Scope">Scope of Search</param>
@@ -49,7 +49,7 @@ namespace MetalMynds.FlatGlass
         /// <summary>
         /// Find UI Element By Using And/Or Property Condition KeyValue Pairs.
         /// </summary>
-        /// <param name="Order">Specifies Order of Chained Look-Up, Does Not Have to be Sequential Or Start at 0 and Are Local to PlaceHolder.</param>
+        /// <param name="Order">Specifies Order of Chained Look-Up, Does Not Have to be Sequential Or Start at 0 or Are Local to PlaceHolder.</param>
         /// <param name="How">Specifies the Method Used to Find Controls.</param>
         /// <param name="Scope">Scope of Search</param>
         /// <param name="PropertyValuePairs">Key Value Pairs. Equals: Property==Value or Property=Value. Not Equals: Property!=Value or Property&lt;&gt;Value.</param>
