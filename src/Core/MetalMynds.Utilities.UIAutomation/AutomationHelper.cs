@@ -91,6 +91,8 @@ namespace MetalMynds.Utilities
                     {
                         return false;
                     }
+
+                    count++;
                 }
             }
 
@@ -118,6 +120,8 @@ namespace MetalMynds.Utilities
                     {
                         return false;
                     }
+
+                    count++;
                 }
             }
 
