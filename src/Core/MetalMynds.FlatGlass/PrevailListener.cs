@@ -44,10 +44,10 @@ namespace MetalMynds.FlatGlass
         public override void ExitAndCondition(PrevailParser.AndConditionContext context)
         {
             base.ExitAndCondition(context);
-            
-            var right = _conditionStack.Pop();
 
             var left = _conditionStack.Pop();
+
+            var right = _conditionStack.Pop();
 
             var and = new AndCondition(new Condition[] { left, right });
 
@@ -58,9 +58,9 @@ namespace MetalMynds.FlatGlass
         {
             base.ExitOrCondition(context);
 
-            var right = _conditionStack.Pop();
+            var left = _conditionStack.Pop();
 
-            var left = _conditionStack.Pop();            
+            var right = _conditionStack.Pop();
 
             var or = new OrCondition(new Condition[] { left, right });
 

@@ -50,19 +50,10 @@ namespace MetalMynds.FlatGlass.UnitTests
                     new PropertyCondition(AutomationElement.ClassNameProperty, "Awsum"), 
                     new PropertyCondition(AutomationElement.NameProperty, "Adi"));
 
-
-            var expression3 = new ExpressionLocator("", 1, Scope.Descendants, "Class = 'Awsum' And Name = 'Adi'");
-
-            var result3Expression = expression3.Condition;
-
-            Assert.IsTrue(AutomationHelper.Compare(result3, result3Expression));
-
-        
-        
         }
 
 
 
     }
 
-} 
+}
